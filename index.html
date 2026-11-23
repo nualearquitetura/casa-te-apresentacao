@@ -539,13 +539,11 @@ body.editg #ordBar{display:flex}
       <p>Beliche, armário e bancada junto às paredes liberam o meio do quarto para brincar e circular.</p>
     </div>
     <figure class="pb rv">
-      <button type="button" class="pb-img" id="pbOpen" aria-label="Ampliar planta"><img src="img/quarto/planta-web.jpg" alt="Planta baixa do quarto dos meninos com medidas"></button>
-      <figcaption><span>Toque na planta para ampliar.</span><button type="button" class="btn dark" id="pbDl"><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Baixar planta</button></figcaption>
+      <button type="button" class="pb-img" data-pbopen="quarto" aria-label="Ampliar planta"><img src="img/quarto/planta-web.jpg" alt="Planta baixa com medidas"></button>
+      <figcaption><span>Toque na planta para ampliar.</span><button type="button" class="btn dark" data-pbdl="quarto"><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Baixar planta</button></figcaption>
     </figure>
   </div>
 </section>
-<div class="pbz" id="pbZoom" role="dialog" aria-modal="true"><button class="x" type="button" id="pbClose" aria-label="Fechar">✕</button><div class="pbz-sc" id="pbSc"><img src="img/quarto/planta.jpg" alt="Planta baixa ampliada"></div><p class="pbz-d">Toque para aproximar · arraste para mover</p></div>
-
 <section class="sub" id="tour-quarto">
   <div class="wrap">
     <div class="sub-head rv"><p class="kicker">Tour interativo</p><h2>Explore cada detalhe</h2><p>Toque nos pontos da imagem.</p></div>
@@ -609,6 +607,19 @@ body.editg #ordBar{display:flex}
     <p class="kicker">Casa TE · Ambiente 03</p>
     <h1 class="amb-h">SUÍTE CASAL</h1>
     <span class="pill big">Para aprovar</span>
+  </div>
+</section>
+<section id="layout-suite" class="lay">
+  <div class="wrap">
+    <div class="lay-head rv">
+      <p class="kicker">Layout</p>
+      <h2>Planta baixa</h2>
+      
+    </div>
+    <figure class="pb rv">
+      <button type="button" class="pb-img" data-pbopen="suite" aria-label="Ampliar planta"><img src="img/suite/planta-web.jpg" alt="Planta baixa com medidas"></button>
+      <figcaption><span>Toque na planta para ampliar.</span><button type="button" class="btn dark" data-pbdl="suite"><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Baixar planta</button></figcaption>
+    </figure>
   </div>
 </section>
 <section class="sub" id="tour-suite">
@@ -722,6 +733,7 @@ body.editg #ordBar{display:flex}
   <button class="nx" id="lbn" aria-label="Próxima">→</button>
 </div>
 <div class="toast" id="toast"></div>
+<div class="pbz" id="pbZoom" role="dialog" aria-modal="true"><button class="x" type="button" id="pbClose" aria-label="Fechar">✕</button><div class="pbz-sc" id="pbSc"><img src="" alt="Planta baixa ampliada"></div><p class="pbz-d">Toque para aproximar · arraste para mover</p></div>
 
 <script>
 (function(){
@@ -858,20 +870,19 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.targ
 $$('.rv').forEach(el=>io.observe(el));
 
 const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&e.target.offsetParent!==null){const id=e.target.dataset.sec;links.forEach(x=>x.classList.toggle('on',x.getAttribute('href')==='#'+id))}}),{rootMargin:'-45% 0px -50% 0px'});
-[['sala','sala'],['tour-sala','sala'],['aj-sala','sala'],['imagens-sala','sala'],['quarto','quarto'],['layout-quarto','quarto'],['tour-quarto','quarto'],['aj-quarto','quarto'],['imagens-quarto','quarto'],['suite','suite'],['tour-suite','suite'],['aj-suite','suite'],['imagens-suite','suite'],['enviar','enviar']].forEach(([id,s])=>{const el=document.getElementById(id);el.dataset.sec=s;so.observe(el)});
+[['sala','sala'],['tour-sala','sala'],['aj-sala','sala'],['imagens-sala','sala'],['quarto','quarto'],['layout-quarto','quarto'],['tour-quarto','quarto'],['aj-quarto','quarto'],['imagens-quarto','quarto'],['suite','suite'],['layout-suite','suite'],['tour-suite','suite'],['aj-suite','suite'],['imagens-suite','suite'],['enviar','enviar']].forEach(([id,s])=>{const el=document.getElementById(id);el.dataset.sec=s;so.observe(el)});
 })();
 </script>
 <script>(function(){
-const $=s=>document.querySelector(s);
-const z=$('#pbZoom'),sc=$('#pbSc');if(!z)return;
-$('#pbOpen').onclick=()=>{z.classList.add('open');sc.classList.remove('zin');document.body.style.overflow='hidden'};
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const z=$('#pbZoom'),sc=$('#pbSc'),zi=sc.querySelector('img');
+$$('[data-pbopen]').forEach(b=>b.onclick=()=>{zi.src='img/'+b.dataset.pbopen+'/planta.jpg';z.classList.add('open');sc.classList.remove('zin');document.body.style.overflow='hidden'});
 const close=()=>{z.classList.remove('open');document.body.style.overflow=''};
 $('#pbClose').onclick=close;z.addEventListener('click',e=>{if(e.target===z)close()});
 addEventListener('keydown',e=>{if(e.key==='Escape'&&z.classList.contains('open'))close()});
-sc.querySelector('img').onclick=e=>{const r=sc.getBoundingClientRect(),fx=(e.clientX-r.left+sc.scrollLeft)/sc.scrollWidth,fy=(e.clientY-r.top+sc.scrollTop)/sc.scrollHeight;
+zi.onclick=e=>{const r=sc.getBoundingClientRect(),fx=(e.clientX-r.left+sc.scrollLeft)/sc.scrollWidth,fy=(e.clientY-r.top+sc.scrollTop)/sc.scrollHeight;
   sc.classList.toggle('zin');if(sc.classList.contains('zin')){sc.scrollLeft=fx*sc.scrollWidth-r.width/2;sc.scrollTop=fy*sc.scrollHeight-r.height/2}};
-$('#pbDl').onclick=()=>window.__baixarArq&&window.__baixarArq('img/quarto/planta.jpg','Casa TE - Quarto - Planta baixa.jpg');
-})();
-</script>
+$$('[data-pbdl]').forEach(b=>b.onclick=()=>{const a=b.dataset.pbdl;window.__baixarArq&&window.__baixarArq('img/'+a+'/planta.jpg','Casa TE - '+(a==='quarto'?'Quarto':'Suíte')+' - Planta baixa.jpg')});
+})();</script>
 </body>
 </html>
