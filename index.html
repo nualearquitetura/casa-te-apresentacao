@@ -366,6 +366,15 @@ body.editg #ordBar{display:flex}
 .enviar .rs ul{margin:6px 0 0;padding-left:18px}
 @media (max-width:700px){.amb-hero{min-height:80svh}}
 [hidden]{display:none!important}
+/* grade única: tudo alinhado às margens da .wrap */
+.sub-head,.lay-head{text-align:left!important}
+.sub-head p,.lay-head p{margin-left:0!important;margin-right:0!important}
+.tabs{justify-content:flex-start!important}
+.pb{max-width:none!important}
+.apv{max-width:none!important}
+.lay-v{max-width:none!important}
+.stage{justify-content:stretch!important;justify-items:stretch!important}
+
 .ajg2{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 @media (max-width:900px){.ajg2{grid-template-columns:1fr!important}}
 .top nav a{letter-spacing:.06em;font-size:13px}
@@ -552,7 +561,7 @@ body.editg #ordBar{display:flex}
     <p class="kicker rv">O que mudou</p>
     <h2 class="rv">Atualizações do projeto</h2>
     <p class="lead rv">Confira e deixe sua aprovação ou comentário.</p>
-    <div class="ajg" style="grid-template-columns:minmax(0,640px)">
+    <div class="ajg ajg2">
       <article class="ajc rv" data-aj="quarto:spots">
         <div class="pic"><img src="img/quarto/geral.jpg" alt="Teto do quarto com plafon central e dois spots" style="object-position:center 0%">
           <div class="mark ring lf" style="left:41.9%;top:34.7%"><span class="d"></span><span class="l">Spot novo</span></div>
@@ -629,8 +638,8 @@ body.editg #ordBar{display:flex}
         <div class="bd"><span class="badge">Realocado · 01</span><h3>3 spots realocados</h3><p>Os dois spots do guarda-roupa e o spot perto da mesa foram realocados.</p></div>
       </article>
       <article class="ajc rv">
-        <div class="pic"><img src="img/suite/mesa-tv.jpg" alt="Novo spot em frente ao espelho" style="object-position:center 0%">
-          <div class="mark ring" style="left:55%;top:45.9%"><span class="d"></span><span class="l">Spot novo</span></div>
+        <div class="pic" style="aspect-ratio:1121/1403"><img src="img/suite/mesa-tv.jpg" alt="Novo spot em frente ao espelho">
+          <div class="mark ring" style="left:55%;top:31.1%"><span class="d"></span><span class="l">Spot novo</span></div>
         </div>
         <div class="bd"><span class="badge">Novo · 02</span><h3>Spot em frente ao espelho</h3><p>Foi adicionado um ponto de luz em frente ao espelho.</p></div>
       </article>
