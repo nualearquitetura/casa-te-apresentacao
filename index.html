@@ -378,7 +378,7 @@ body.editg #ordBar{display:flex}
 .ajg2{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 @media (max-width:900px){.ajg2{grid-template-columns:1fr!important}}
 .top nav a{letter-spacing:.06em;font-size:13px}
-@media (max-width:600px){.top{flex-wrap:wrap;row-gap:6px;padding:10px 14px}.top>a{width:100%;display:flex;justify-content:center}.top img{height:18px}.top nav{width:100%;justify-content:space-between;overflow:visible}.top nav a{font-size:11px;padding:6px 8px;letter-spacing:.04em}}
+@media (max-width:600px){.top{flex-wrap:wrap;row-gap:6px;padding:10px 14px}.top>a{width:100%;display:flex;justify-content:center}.top img{height:18px}.top nav{width:100%;justify-content:center;flex-wrap:wrap;gap:2px 4px;overflow:visible}.top nav a{font-size:11px;padding:5px 8px;letter-spacing:.04em}}
 
 @media (max-width:480px){.top nav a[href="#enviar"]{display:none}}
 .apv{max-width:640px;margin:24px 0 8px;position:relative;z-index:1}
@@ -435,6 +435,7 @@ body.editg #ordBar{display:flex}
     <a href="#sala">SALA</a>
     <a href="#quarto">QUARTO DOS MENINOS</a>
     <a href="#suite">SUÍTE CASAL</a>
+    <a href="#meninas">QUARTO DAS MENINAS</a>
     <a href="#enviar">ENVIAR</a>
   </nav>
 </header>
@@ -689,13 +690,39 @@ body.editg #ordBar{display:flex}
     <div class="grid" id="grid-suite"></div>
   </div>
 </section>
+<a class="next" href="#meninas"><img src="img/meninas/geral.jpg" alt=""><span class="next-t"><small>Próximo ambiente</small><b>QUARTO DAS MENINAS</b></span><span class="next-a" aria-hidden="true">→</span></a>
 <a class="next prev" href="#quarto"><img src="img/quarto/geral.jpg" alt=""><span class="next-a" aria-hidden="true">←</span><span class="next-t"><small>Ambiente anterior</small><b>QUARTO DOS MENINOS</b></span></a>
+</main>
+
+<main class="page" data-page="meninas" hidden>
+<section class="amb-hero" id="meninas">
+  <img src="img/meninas/geral.jpg" alt="Quarto das meninas">
+  <div class="wrap amb-txt">
+    <p class="kicker">Casa TE · Ambiente 04</p>
+    <h1 class="amb-h">QUARTO DAS MENINAS</h1>
+    <span class="pill big">Para aprovar</span>
+  </div>
+</section>
+<section class="sub gal" id="imagens-meninas">
+  <div class="wrap">
+    <div class="gal-head rv">
+      <div><p class="kicker">Imagens</p><h2>Comente o que quiser</h2><p class="gal-sub">Toque em “Comentar” em qualquer imagem. Não é obrigatório.</p></div>
+      <div class="gal-tools">
+        <button class="btn dark" type="button" data-zip="meninas"><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Baixar todas (.zip)</button>
+        <button class="btn dark ordBtn" type="button" data-ord="meninas">↕ Reorganizar ordem</button>
+      </div>
+    </div>
+    <div class="ordBar" id="ordBar-meninas"><span>Arraste as imagens para mudar a ordem.</span><button class="btn" type="button" data-ordc="meninas">Cancelar</button><button class="btn solid" type="button" data-ords="meninas">Salvar ordem</button></div>
+    <div class="grid" id="grid-meninas"></div>
+  </div>
+</section>
+<a class="next prev" href="#suite"><img src="img/suite/cama-frontal.jpg" alt=""><span class="next-a" aria-hidden="true">←</span><span class="next-t"><small>Ambiente anterior</small><b>SUÍTE CASAL</b></span></a>
 </main>
 
 <section class="aj enviar" id="enviar">
   <div class="wrap">
     <p class="kicker rv">Sua resposta</p>
-    <h2 class="rv"><span data-only="quarto">QUARTO DOS MENINOS</span><span data-only="suite">SUÍTE CASAL</span><span data-only="sala">ENVIAR COMENTÁRIOS</span></h2>
+    <h2 class="rv"><span data-only="quarto">QUARTO DOS MENINOS</span><span data-only="suite">SUÍTE CASAL</span><span data-only="meninas">QUARTO DAS MENINAS</span><span data-only="sala">ENVIAR COMENTÁRIOS</span></h2>
     <div class="ajc apv" data-aj="quarto:ambiente" data-only="quarto">
       <div class="bd">
         <h3>Aprovação do projeto</h3>
@@ -711,6 +738,16 @@ body.editg #ordBar{display:flex}
         <h3>Aprovação do projeto</h3>
         <div class="ok">
           <button type="button" data-v="aprovado">✓ Aprovo o projeto</button>
+          <button type="button" data-v="ajustes">Quero ajustes</button>
+        </div>
+        <textarea class="show" placeholder="Deixe um comentário (opcional)…"></textarea>
+      </div>
+    </div>
+    <div class="ajc apv" data-aj="meninas:ambiente" data-only="meninas">
+      <div class="bd">
+        <h3>Aprovação das imagens</h3>
+        <div class="ok">
+          <button type="button" data-v="aprovado">✓ Aprovo as imagens</button>
           <button type="button" data-v="ajustes">Quero ajustes</button>
         </div>
         <textarea class="show" placeholder="Deixe um comentário (opcional)…"></textarea>
@@ -740,7 +777,7 @@ body.editg #ordBar{display:flex}
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('show'),2200)};
-const AMB={"sala": {"nome": "Sala de estar e jantar", "status": "aprovado", "tour": [{"nome": "Estar", "img": "img/sala/estar-frontal.jpg", "spots": [{"x": 26, "y": 38, "t": "Prateleira com LED", "d": "Prateleira contínua com fita de LED embutida, para plantas e objetos."}, {"x": 70, "y": 33, "t": "Painel em madeira", "d": "O painel de madeira traz um aconchego a mais e quebra a paleta clara, sem deixar o ambiente todo bege. Ele abraça o canto do sofá e recebe as prateleiras afetivas."}, {"x": 76, "y": 50, "t": "Arandela articulada", "d": "Arandela branca de haste longa: luz de leitura sem ocupar o chão."}, {"x": 89, "y": 56, "t": "Prateleiras afetivas", "d": "Prateleiras iluminadas para os porta-retratos da família."}, {"x": 62, "y": 90, "t": "Tapete orgânico", "d": "O desenho orgânico contorna a área da mesa de jantar, para que as cadeiras não tropecem no tapete."}]}, {"nome": "Jantar", "img": "img/sala/jantar.jpg", "spots": [{"x": 62, "y": 16, "t": "Viga iluminada", "d": "Viga revestida em madeira com LED que integra estar e jantar."}, {"x": 44, "y": 35, "t": "Pendente orgânico", "d": "Pendente em anel de LED, desenho leve que marca o centro da mesa."}, {"x": 41, "y": 58, "t": "Mesa redonda 150 cm", "d": "Mesa redonda de 150 cm de diâmetro, para 6 lugares."}, {"x": 19, "y": 66, "t": "Cadeiras de encosto curvo", "d": "Estrutura em madeira e assento estofado claro, confortáveis para longas conversas."}, {"x": 62, "y": 47, "t": "Parede afetiva", "d": "Quadros ilustrados da família e dos cachorros, valorizados por spots direcionáveis."}, {"x": 41, "y": 43, "t": "Cortina de linho", "d": "Cortina em linho com sanca iluminada, filtrando a luz natural."}, {"x": 60, "y": 93, "t": "Porcelanato polido", "d": "Piso claro e contínuo que amplia e reflete a luz."}]}, {"nome": "TV", "img": "img/sala/tv-jantar.jpg", "spots": [{"x": 61, "y": 60, "t": "Rack de madeira", "d": "Rack suspenso adicionado ao projeto. A escolha do MDF seguiu o painel já existente."}, {"x": 70, "y": 14, "t": "Plafon em madeira", "d": "Plafon com acabamento madeirado e difusor central — luz geral suave."}, {"x": 20, "y": 56, "t": "Mesa de jantar", "d": "O jantar fica a poucos passos do estar, tudo no mesmo ambiente."}]}, {"nome": "Detalhes", "img": "img/sala/nichos.jpg", "spots": [{"x": 12, "y": 17, "t": "Vasos em madeira", "d": "Vasos esculturais com galhos de eucalipto."}, {"x": 16, "y": 34, "t": "Arandela articulada", "d": "Cúpula cônica branca, direcionada para a leitura no sofá."}, {"x": 54, "y": 48, "t": "Prateleiras afetivas", "d": "Cada prateleira tem LED próprio, que realça as fotos à noite."}, {"x": 49, "y": 80, "t": "Velas aromáticas", "d": "Pequenos rituais que deixam a sala com cheiro de casa."}, {"x": 78, "y": 45, "t": "Cortina de linho", "d": "Tecido natural, caimento leve e iluminação na sanca."}, {"x": 30, "y": 62, "t": "Painel em madeira", "d": "A madeira aquece a composição e equilibra os tons claros da sala."}]}], "gal": [{"f": "amplo-natal", "c": "Vista geral do living"}, {"f": "estar-l", "c": "Sofá em L e parede de pedra"}, {"f": "jantar", "c": "Jantar e parede afetiva"}, {"f": "arvore", "c": "Árvore de Natal"}, {"f": "tv-jantar", "c": "Painel da TV e jantar"}, {"f": "nichos", "c": "Prateleiras afetivas"}, {"f": "entrada", "c": "Área da entrada"}, {"f": "estar-frontal", "c": "Estar"}, {"f": "jantar-tv", "c": "Mesa redonda 150 cm · 6 lugares"}, {"f": "quadros", "c": "Quadros da família"}, {"f": "arvore-estar", "c": "Natal no estar"}]}, "quarto": {"nome": "Quarto dos meninos", "status": "aguardando", "tour": [{"nome": "Beliche", "img": "img/quarto/beliche.jpg", "spots": [{"x": 62, "y": 41, "t": "Beliche sob medida", "d": "Cama de cima com guarda-corpo em ripas de madeira."}, {"x": 49, "y": 64, "t": "Escada metálica", "d": "Escada em metal preto, fixa na estrutura do beliche."}, {"x": 79, "y": 63, "t": "Armário verde", "d": "Armário embutido sob a cama de cima, no verde do quarto."}, {"x": 27, "y": 58, "t": "LED na cabeceira", "d": "Fita de LED que marca a cabeceira e deixa uma luz suave para a noite."}, {"x": 44, "y": 84, "t": "Gavetões", "d": "Gavetas sob a cama de baixo e o banco, com puxadores dourados."}]}, {"nome": "Estudo", "img": "img/quarto/estudo.jpg", "spots": [{"x": 28, "y": 56, "t": "Bancada de estudo", "d": "Bancada em madeira junto à janela, com luz natural."}, {"x": 41, "y": 17, "t": "Sanca com LED", "d": "Luz indireta sobre a cortina."}, {"x": 60, "y": 35, "t": "Cortina", "d": "Cortina em tecido leve, que filtra a luz."}]}, {"nome": "Armário", "img": "img/quarto/armario.jpg", "spots": [{"x": 47, "y": 35, "t": "Armário em madeira", "d": "Portas lisas em madeira com puxadores dourados."}, {"x": 9, "y": 45, "t": "Nicho curvo", "d": "Nicho verde com cantos arredondados, prateleiras e ganchos para mochila."}, {"x": 79, "y": 41, "t": "Prateleiras iluminadas", "d": "Prateleiras com LED para livros e brinquedos."}]}, {"nome": "TV", "img": "img/quarto/painel-tv.jpg", "spots": [{"x": 25, "y": 28, "t": "Painel ripado verde", "d": "Painel ripado no verde do quarto, que recebe a TV."}, {"x": 42, "y": 48, "t": "TV", "d": "TV fixada no painel, na frente do beliche."}]}], "gal": [{"f": "beliche-tv", "c": "Beliche e painel da TV"}, {"f": "beliche", "c": "Beliche"}, {"f": "painel-tv", "c": "Painel ripado e TV"}, {"f": "armario", "c": "Armário e nichos"}, {"f": "armario-frontal", "c": "Armário em madeira"}, {"f": "estudo-detalhe", "c": "Bancada de estudo"}, {"f": "geral", "c": "Vista geral do quarto"}, {"f": "estudo", "c": "Estudo e beliche"}, {"f": "beliche-detalhe", "c": "Armário verde do beliche"}]}, "suite": {"nome": "Suíte casal", "status": "aguardando", "tour": [{"nome": "Cama", "img": "img/suite/cama-frontal.jpg", "spots": [{"x": 40, "y": 56, "t": "Cabeceira estofada", "d": "Cabeceira arredondada em tecido claro, macia e acolhedora."}, {"x": 40, "y": 34, "t": "Armário aéreo", "d": "Armário aéreo sobre a cabeceira, com puxadores em madeira."}, {"x": 40, "y": 44, "t": "Nicho com LED", "d": "Nicho em madeira com fita de LED para livros e objetos."}, {"x": 11, "y": 53, "t": "Arandelas", "d": "Arandelas de globo dos dois lados da cama, para leitura."}, {"x": 10, "y": 64, "t": "Criados suspensos", "d": "Criados-mudos suspensos, leves e fáceis de limpar."}, {"x": 45, "y": 92, "t": "Cama com gavetas", "d": "Base da cama com gavetas para guardar roupa de cama."}]}, {"nome": "Guarda-roupa", "img": "img/suite/guarda-roupa-prateleiras.jpg", "spots": [{"x": 62, "y": 50, "t": "Portas lisas", "d": "Portas lisas em tom claro, sem interrupções."}, {"x": 55, "y": 77, "t": "Puxador em madeira", "d": "Puxador cava em madeira, embutido na porta."}, {"x": 27, "y": 40, "t": "Prateleiras com LED", "d": "Prateleiras em madeira com LED para fotos e objetos."}]}, {"nome": "Mesa e espelho", "img": "img/suite/mesa-espelho.jpg", "spots": [{"x": 76, "y": 58, "t": "Espelho com LED", "d": "Espelho oval com iluminação em LED ao redor."}, {"x": 58, "y": 68, "t": "Mesa arredondada", "d": "Mesa com canto arredondado, mais suave na circulação."}, {"x": 37, "y": 30, "t": "Painel com LED", "d": "Painel em madeira com LED sob o armário."}, {"x": 74, "y": 19, "t": "Grelha do ar-condicionado", "d": "Ripado em madeira que esconde o ar-condicionado."}]}, {"nome": "Janela", "img": "img/suite/janela.jpg", "spots": [{"x": 57, "y": 50, "t": "Cortina", "d": "Cortina em tecido leve, do teto ao chão."}]}], "gal": [{"f": "cama-frontal", "c": "Cama e cabeceira"}, {"f": "cama-angulo", "c": "Cama e armário aéreo"}, {"f": "cabeceira", "c": "Detalhe da cabeceira"}, {"f": "guarda-roupa", "c": "Guarda-roupa"}, {"f": "guarda-roupa-prateleiras", "c": "Guarda-roupa e prateleiras"}, {"f": "puxador", "c": "Puxador em madeira"}, {"f": "mesa-espelho", "c": "Mesa e espelho"}, {"f": "mesa-tv", "c": "Mesa, TV e painel com LED"}, {"f": "painel-led", "c": "Painel com LED"}, {"f": "janela", "c": "Janela e cortina"}]}};
+const AMB={"sala": {"nome": "Sala de estar e jantar", "status": "aprovado", "tour": [{"nome": "Estar", "img": "img/sala/estar-frontal.jpg", "spots": [{"x": 26, "y": 38, "t": "Prateleira com LED", "d": "Prateleira contínua com fita de LED embutida, para plantas e objetos."}, {"x": 70, "y": 33, "t": "Painel em madeira", "d": "O painel de madeira traz um aconchego a mais e quebra a paleta clara, sem deixar o ambiente todo bege. Ele abraça o canto do sofá e recebe as prateleiras afetivas."}, {"x": 76, "y": 50, "t": "Arandela articulada", "d": "Arandela branca de haste longa: luz de leitura sem ocupar o chão."}, {"x": 89, "y": 56, "t": "Prateleiras afetivas", "d": "Prateleiras iluminadas para os porta-retratos da família."}, {"x": 62, "y": 90, "t": "Tapete orgânico", "d": "O desenho orgânico contorna a área da mesa de jantar, para que as cadeiras não tropecem no tapete."}]}, {"nome": "Jantar", "img": "img/sala/jantar.jpg", "spots": [{"x": 62, "y": 16, "t": "Viga iluminada", "d": "Viga revestida em madeira com LED que integra estar e jantar."}, {"x": 44, "y": 35, "t": "Pendente orgânico", "d": "Pendente em anel de LED, desenho leve que marca o centro da mesa."}, {"x": 41, "y": 58, "t": "Mesa redonda 150 cm", "d": "Mesa redonda de 150 cm de diâmetro, para 6 lugares."}, {"x": 19, "y": 66, "t": "Cadeiras de encosto curvo", "d": "Estrutura em madeira e assento estofado claro, confortáveis para longas conversas."}, {"x": 62, "y": 47, "t": "Parede afetiva", "d": "Quadros ilustrados da família e dos cachorros, valorizados por spots direcionáveis."}, {"x": 41, "y": 43, "t": "Cortina de linho", "d": "Cortina em linho com sanca iluminada, filtrando a luz natural."}, {"x": 60, "y": 93, "t": "Porcelanato polido", "d": "Piso claro e contínuo que amplia e reflete a luz."}]}, {"nome": "TV", "img": "img/sala/tv-jantar.jpg", "spots": [{"x": 61, "y": 60, "t": "Rack de madeira", "d": "Rack suspenso adicionado ao projeto. A escolha do MDF seguiu o painel já existente."}, {"x": 70, "y": 14, "t": "Plafon em madeira", "d": "Plafon com acabamento madeirado e difusor central — luz geral suave."}, {"x": 20, "y": 56, "t": "Mesa de jantar", "d": "O jantar fica a poucos passos do estar, tudo no mesmo ambiente."}]}, {"nome": "Detalhes", "img": "img/sala/nichos.jpg", "spots": [{"x": 12, "y": 17, "t": "Vasos em madeira", "d": "Vasos esculturais com galhos de eucalipto."}, {"x": 16, "y": 34, "t": "Arandela articulada", "d": "Cúpula cônica branca, direcionada para a leitura no sofá."}, {"x": 54, "y": 48, "t": "Prateleiras afetivas", "d": "Cada prateleira tem LED próprio, que realça as fotos à noite."}, {"x": 49, "y": 80, "t": "Velas aromáticas", "d": "Pequenos rituais que deixam a sala com cheiro de casa."}, {"x": 78, "y": 45, "t": "Cortina de linho", "d": "Tecido natural, caimento leve e iluminação na sanca."}, {"x": 30, "y": 62, "t": "Painel em madeira", "d": "A madeira aquece a composição e equilibra os tons claros da sala."}]}], "gal": [{"f": "amplo-natal", "c": "Vista geral do living"}, {"f": "estar-l", "c": "Sofá em L e parede de pedra"}, {"f": "jantar", "c": "Jantar e parede afetiva"}, {"f": "arvore", "c": "Árvore de Natal"}, {"f": "tv-jantar", "c": "Painel da TV e jantar"}, {"f": "nichos", "c": "Prateleiras afetivas"}, {"f": "entrada", "c": "Área da entrada"}, {"f": "estar-frontal", "c": "Estar"}, {"f": "jantar-tv", "c": "Mesa redonda 150 cm · 6 lugares"}, {"f": "quadros", "c": "Quadros da família"}, {"f": "arvore-estar", "c": "Natal no estar"}]}, "quarto": {"nome": "Quarto dos meninos", "status": "aguardando", "tour": [{"nome": "Beliche", "img": "img/quarto/beliche.jpg", "spots": [{"x": 62, "y": 41, "t": "Beliche sob medida", "d": "Cama de cima com guarda-corpo em ripas de madeira."}, {"x": 49, "y": 64, "t": "Escada metálica", "d": "Escada em metal preto, fixa na estrutura do beliche."}, {"x": 79, "y": 63, "t": "Armário verde", "d": "Armário embutido sob a cama de cima, no verde do quarto."}, {"x": 27, "y": 58, "t": "LED na cabeceira", "d": "Fita de LED que marca a cabeceira e deixa uma luz suave para a noite."}, {"x": 44, "y": 84, "t": "Gavetões", "d": "Gavetas sob a cama de baixo e o banco, com puxadores dourados."}]}, {"nome": "Estudo", "img": "img/quarto/estudo.jpg", "spots": [{"x": 28, "y": 56, "t": "Bancada de estudo", "d": "Bancada em madeira junto à janela, com luz natural."}, {"x": 41, "y": 17, "t": "Sanca com LED", "d": "Luz indireta sobre a cortina."}, {"x": 60, "y": 35, "t": "Cortina", "d": "Cortina em tecido leve, que filtra a luz."}]}, {"nome": "Armário", "img": "img/quarto/armario.jpg", "spots": [{"x": 47, "y": 35, "t": "Armário em madeira", "d": "Portas lisas em madeira com puxadores dourados."}, {"x": 9, "y": 45, "t": "Nicho curvo", "d": "Nicho verde com cantos arredondados, prateleiras e ganchos para mochila."}, {"x": 79, "y": 41, "t": "Prateleiras iluminadas", "d": "Prateleiras com LED para livros e brinquedos."}]}, {"nome": "TV", "img": "img/quarto/painel-tv.jpg", "spots": [{"x": 25, "y": 28, "t": "Painel ripado verde", "d": "Painel ripado no verde do quarto, que recebe a TV."}, {"x": 42, "y": 48, "t": "TV", "d": "TV fixada no painel, na frente do beliche."}]}], "gal": [{"f": "beliche-tv", "c": "Beliche e painel da TV"}, {"f": "beliche", "c": "Beliche"}, {"f": "painel-tv", "c": "Painel ripado e TV"}, {"f": "armario", "c": "Armário e nichos"}, {"f": "armario-frontal", "c": "Armário em madeira"}, {"f": "estudo-detalhe", "c": "Bancada de estudo"}, {"f": "geral", "c": "Vista geral do quarto"}, {"f": "estudo", "c": "Estudo e beliche"}, {"f": "beliche-detalhe", "c": "Armário verde do beliche"}]}, "suite": {"nome": "Suíte casal", "status": "aguardando", "tour": [{"nome": "Cama", "img": "img/suite/cama-frontal.jpg", "spots": [{"x": 40, "y": 56, "t": "Cabeceira estofada", "d": "Cabeceira arredondada em tecido claro, macia e acolhedora."}, {"x": 40, "y": 34, "t": "Armário aéreo", "d": "Armário aéreo sobre a cabeceira, com puxadores em madeira."}, {"x": 40, "y": 44, "t": "Nicho com LED", "d": "Nicho em madeira com fita de LED para livros e objetos."}, {"x": 11, "y": 53, "t": "Arandelas", "d": "Arandelas de globo dos dois lados da cama, para leitura."}, {"x": 10, "y": 64, "t": "Criados suspensos", "d": "Criados-mudos suspensos, leves e fáceis de limpar."}, {"x": 45, "y": 92, "t": "Cama com gavetas", "d": "Base da cama com gavetas para guardar roupa de cama."}]}, {"nome": "Guarda-roupa", "img": "img/suite/guarda-roupa-prateleiras.jpg", "spots": [{"x": 62, "y": 50, "t": "Portas lisas", "d": "Portas lisas em tom claro, sem interrupções."}, {"x": 55, "y": 77, "t": "Puxador em madeira", "d": "Puxador cava em madeira, embutido na porta."}, {"x": 27, "y": 40, "t": "Prateleiras com LED", "d": "Prateleiras em madeira com LED para fotos e objetos."}]}, {"nome": "Mesa e espelho", "img": "img/suite/mesa-espelho.jpg", "spots": [{"x": 76, "y": 58, "t": "Espelho com LED", "d": "Espelho oval com iluminação em LED ao redor."}, {"x": 58, "y": 68, "t": "Mesa arredondada", "d": "Mesa com canto arredondado, mais suave na circulação."}, {"x": 37, "y": 30, "t": "Painel com LED", "d": "Painel em madeira com LED sob o armário."}, {"x": 74, "y": 19, "t": "Grelha do ar-condicionado", "d": "Ripado em madeira que esconde o ar-condicionado."}]}, {"nome": "Janela", "img": "img/suite/janela.jpg", "spots": [{"x": 57, "y": 50, "t": "Cortina", "d": "Cortina em tecido leve, do teto ao chão."}]}], "gal": [{"f": "cama-frontal", "c": "Cama e cabeceira"}, {"f": "cama-angulo", "c": "Cama e armário aéreo"}, {"f": "cabeceira", "c": "Detalhe da cabeceira"}, {"f": "guarda-roupa", "c": "Guarda-roupa"}, {"f": "guarda-roupa-prateleiras", "c": "Guarda-roupa e prateleiras"}, {"f": "puxador", "c": "Puxador em madeira"}, {"f": "mesa-espelho", "c": "Mesa e espelho"}, {"f": "mesa-tv", "c": "Mesa, TV e painel com LED"}, {"f": "painel-led", "c": "Painel com LED"}, {"f": "janela", "c": "Janela e cortina"}]}, "meninas": {"nome": "Quarto das meninas", "status": "aguardando", "tour": [], "gal": [{"f": "geral", "c": "Vista geral do quarto"}, {"f": "cabeceira-nicho", "c": "Cabeceira e nicho iluminado"}, {"f": "armario-central", "c": "Armário central com nichos"}, {"f": "cama-espelho", "c": "Cama, aéreos e espelho"}, {"f": "cama-cortina", "c": "Cama junto à janela"}, {"f": "cama-lateral", "c": "Cama e cabeceira"}, {"f": "estudo", "c": "Bancada de estudo e armário"}, {"f": "comoda-espelho", "c": "Cômoda e espelho com LED"}]}};
 const coms=store.get('casate-coms',{}), resp=store.get('casate-resp',{});
 /* tour */
 function tour(a){
@@ -770,7 +807,7 @@ function tour(a){
 const dlIco='<svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>';
 const ordem={}; let lbList=[],lbI=0,lbA='sala';
 const src=(a,i)=>`img/${a}/${AMB[a].gal[i].f}.jpg`, hd=(a,i)=>`img/${a}/hd/${AMB[a].gal[i].f}.jpg`;
-const nomeArq=(a,i)=>`Casa TE - ${a==='sala'?'Sala':a==='quarto'?'Quarto':'Suíte'} - ${String(ordem[a].indexOf(i)+1).padStart(2,'0')} - ${AMB[a].gal[i].c.replace(/[\\/:*?"<>|·]/g,'').replace(/\s+/g,' ').trim()}.jpg`;
+const nomeArq=(a,i)=>`Casa TE - ${{sala:'Sala',quarto:'Quarto dos meninos',suite:'Suíte',meninas:'Quarto das meninas'}[a]} - ${String(ordem[a].indexOf(i)+1).padStart(2,'0')} - ${AMB[a].gal[i].c.replace(/[\\/:*?"<>|·]/g,'').replace(/\s+/g,' ').trim()}.jpg`;
 function gal(a){
   const G=AMB[a].gal; ordem[a]=G.map((_,i)=>i);
   $('#grid-'+a).innerHTML=G.map((g,i)=>{const k=a+':'+i,c=coms[k]||'';return `<div class="gi rv${c?' open':''}" data-i="${i}">
@@ -788,7 +825,7 @@ function gal(a){
 }
 function numera(a){$$('#grid-'+a+' .gi').forEach((g,k)=>g.querySelector('.ord').textContent=k+1)}
 function aplica(a,o){const g=$('#grid-'+a);o.forEach(i=>g.appendChild(g.querySelector(`.gi[data-i="${i}"]`)));ordem[a]=o.slice();numera(a)}
-['sala','quarto','suite'].forEach(gal);
+['sala','quarto','suite','meninas'].forEach(gal);
 function openLb(a,k){lbA=a;lbI=k;$('#lb').classList.add('open');document.body.style.overflow='hidden';lbShow()}
 function lbShow(){const i=ordem[lbA][lbI],g=AMB[lbA].gal[i];$('#lbi').src=src(lbA,i);$('#lbi').alt=g.c;$('#lbc').innerHTML=`<b>${lbI+1}/${ordem[lbA].length}</b>${g.c}`}
 function lbGo(d){const n=ordem[lbA].length;lbI=(lbI+d+n)%n;lbShow()}
@@ -826,25 +863,25 @@ $$('[data-ords]').forEach(b=>b.onclick=async()=>{const a=b.dataset.ords,o=$$('#g
   try{await db.doc('config/galeria-'+a).set({ordem:o});ordem[a]=o;editar(a,false);toast('Ordem salva ✓')}catch(e){toast('Não foi possível salvar agora')}});
 (async()=>{try{if(!(window.claude&&claude.use))return;const[d,u]=await Promise.all([claude.use('db'),claude.use('user')]);db=d;
   if(u){let ok=false;try{ok=!!(await u.canEdit())}catch(e){}if(ok)$$('.ordBtn').forEach(b=>b.style.display='inline-flex')}
-  if(db)['sala','quarto','suite'].forEach(a=>db.doc('config/galeria-'+a).onSnapshot(sn=>{const o=sn.exists&&(sn.data()||{}).ordem;const G=AMB[a].gal;if(Array.isArray(o)&&o.length===G.length&&G.every((_,i)=>o.includes(i))&&!$('#grid-'+a).classList.contains('editg'))aplica(a,o)},()=>{}));
+  if(db)['sala','quarto','suite','meninas'].forEach(a=>db.doc('config/galeria-'+a).onSnapshot(sn=>{const o=sn.exists&&(sn.data()||{}).ordem;const G=AMB[a].gal;if(Array.isArray(o)&&o.length===G.length&&G.every((_,i)=>o.includes(i))&&!$('#grid-'+a).classList.contains('editg'))aplica(a,o)},()=>{}));
 }catch(e){}})();
 /* aprovações do quarto */
-const NOMES={'quarto:ambiente':'Aprovação do projeto','quarto:spots':'Novo layout e 3 spots','suite:ambiente':'Aprovação do projeto'};
+const NOMES={'quarto:ambiente':'Aprovação do projeto','quarto:spots':'Novo layout e 3 spots','suite:ambiente':'Aprovação do projeto','meninas:ambiente':'Aprovação das imagens'};
 const EST=v=>v==='aprovado'?'Aprovado ✓':v==='ajustes'?'Quer ajustes':v==='comentar'?'Com comentário':'Sem resposta';
 $$('.ajc[data-aj]').forEach(c=>{const k=c.dataset.aj,ta=c.querySelector('textarea'),bs=c.querySelectorAll('.ok button');if(!ta)return;
   const r=resp[k]||{};if(r.v)c.querySelector(`[data-v="${r.v}"]`).classList.add('on');if(r.c){ta.value=r.c;ta.classList.add('show')}if(r.v==='comentar')ta.classList.add('show');
-  bs.forEach(b=>b.onclick=()=>{bs.forEach(x=>x.classList.remove('on'));b.classList.add('on');resp[k]={...resp[k],v:b.dataset.v};ta.classList.toggle('show',b.dataset.v==='comentar'||!!ta.value);if(b.dataset.v==='comentar'||b.dataset.v==='ajustes')ta.focus();else toast(k.endsWith(':ambiente')?'Obrigado! Projeto aprovado ✓':'Obrigado! Ajuste aprovado ✓');store.set('casate-resp',resp);resumo()});
+  bs.forEach(b=>b.onclick=()=>{bs.forEach(x=>x.classList.remove('on'));b.classList.add('on');resp[k]={...resp[k],v:b.dataset.v};ta.classList.toggle('show',b.dataset.v==='comentar'||!!ta.value);if(b.dataset.v==='comentar'||b.dataset.v==='ajustes')ta.focus();else toast(k==='meninas:ambiente'?'Obrigado! Imagens aprovadas ✓':k.endsWith(':ambiente')?'Obrigado! Projeto aprovado ✓':'Obrigado! Ajuste aprovado ✓');store.set('casate-resp',resp);resumo()});
   ta.oninput=()=>{resp[k]={...resp[k],c:ta.value};store.set('casate-resp',resp);resumo()}});
 function msg(){let t='Casa TE — Apresentação\n';
-  for(const a of ['sala','quarto','suite']){const C=AMB[a].gal.map((g,i)=>[g.c,coms[a+':'+i]]).filter(x=>x[1]&&x[1].trim());
-    const R=Object.keys(NOMES).filter(k=>k.startsWith(a+':'));
+  for(const a of ['sala','quarto','suite','meninas']){const C=AMB[a].gal.map((g,i)=>[g.c,coms[a+':'+i]]).filter(x=>x[1]&&x[1].trim());
+    const R=Object.keys(NOMES).filter(k=>k.startsWith(a+':')&&resp[k]&&(resp[k].v||(resp[k].c||'').trim()));
     if(!C.length&&!R.length)continue;
     t+=`\n*${AMB[a].nome.toUpperCase()}*`;
     R.forEach(k=>{const r=resp[k]||{};t+=`\n• ${NOMES[k]}: ${EST(r.v)}`;if(r.c&&r.c.trim())t+=`\n  "${r.c.trim()}"`});
     C.forEach(([c,v])=>t+=`\n• ${c}: "${v.trim()}"`);t+='\n'}
   return t}
 function resumo(){const out=[];
-  for(const a of ['sala','quarto','suite']){const C=AMB[a].gal.map((g,i)=>[g.c,coms[a+':'+i]]).filter(x=>x[1]&&x[1].trim());
+  for(const a of ['sala','quarto','suite','meninas']){const C=AMB[a].gal.map((g,i)=>[g.c,coms[a+':'+i]]).filter(x=>x[1]&&x[1].trim());
     const R=Object.keys(NOMES).filter(k=>k.startsWith(a+':')).map(k=>{const r=resp[k]||{};return `<li>${NOMES[k]}: ${r.v==='aprovado'?'aprovado ✓':r.v==='comentar'?'com comentário':'sem resposta'}</li>`});
     const esc=s=>s.replace(/</g,'&lt;');
     out.push(`<div class="rs"><h3>${AMB[a].nome}</h3>${R.length||C.length?`<ul>${R.join('')}${C.map(([c,v])=>`<li><b>${c}:</b> ${esc(v.trim())}</li>`).join('')}</ul>`:'<p>Nenhum comentário.</p>'}</div>`)}
@@ -855,7 +892,7 @@ $('#copy').onclick=async()=>{try{await navigator.clipboard.writeText(msg());toas
 /* comentário do cliente na sala (aprovação) */
 const CLI_SALA="Anna, projeto aprovado. Só vamos retirar os spots em cima dos quadro aos lados dos quadros. Projeto Maravilhoso, obrigado por recuperar nossas expectativas e sonho na casa."; if(CLI_SALA){const el=$('#cliSala');el.innerHTML=`<small>Comentário do cliente · aprovado em 21/11/2026</small><p>“${CLI_SALA}”</p>`;el.hidden=false}
 /* páginas */
-function rota(){let h=location.hash.slice(1);const pg=['sala','quarto','suite'];
+function rota(){let h=location.hash.slice(1);const pg=['sala','quarto','suite','meninas'];
   if(!pg.includes(h)){if(h&&document.getElementById(h))return;h='quarto'}
   const cur=document.querySelector('.page:not([hidden])');
   $$('.page').forEach(p=>p.hidden=p.dataset.page!==h);
@@ -870,7 +907,7 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.targ
 $$('.rv').forEach(el=>io.observe(el));
 
 const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&e.target.offsetParent!==null){const id=e.target.dataset.sec;links.forEach(x=>x.classList.toggle('on',x.getAttribute('href')==='#'+id))}}),{rootMargin:'-45% 0px -50% 0px'});
-[['sala','sala'],['tour-sala','sala'],['aj-sala','sala'],['imagens-sala','sala'],['quarto','quarto'],['layout-quarto','quarto'],['tour-quarto','quarto'],['aj-quarto','quarto'],['imagens-quarto','quarto'],['suite','suite'],['layout-suite','suite'],['tour-suite','suite'],['aj-suite','suite'],['imagens-suite','suite'],['enviar','enviar']].forEach(([id,s])=>{const el=document.getElementById(id);el.dataset.sec=s;so.observe(el)});
+[['sala','sala'],['tour-sala','sala'],['aj-sala','sala'],['imagens-sala','sala'],['quarto','quarto'],['layout-quarto','quarto'],['tour-quarto','quarto'],['aj-quarto','quarto'],['imagens-quarto','quarto'],['suite','suite'],['layout-suite','suite'],['tour-suite','suite'],['aj-suite','suite'],['imagens-suite','suite'],['meninas','meninas'],['imagens-meninas','meninas'],['enviar','enviar']].forEach(([id,s])=>{const el=document.getElementById(id);el.dataset.sec=s;so.observe(el)});
 })();
 </script>
 <script>(function(){
