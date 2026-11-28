@@ -703,6 +703,23 @@ body.editg #ordBar{display:flex}
     <span class="pill big">Para aprovar</span>
   </div>
 </section>
+<section class="aj sub" id="aj-meninas">
+  <div class="wrap">
+    <p class="kicker rv">O que mudou</p>
+    <h2 class="rv">Atualizações do projeto</h2>
+    <p class="lead rv">Confira o que mudou e deixe sua aprovação no final.</p>
+        <div class="ajg ajg2">
+      <article class="ajc rv">
+        <div class="pic" style="aspect-ratio:1121/1403"><img src="img/meninas/cabeceira-nicho.jpg" alt="Báscula e nicho sobre a cama">
+          <div class="mark" style="left:38%;top:35.7%"><span class="d"></span><span class="l">Báscula</span></div>
+          <div class="mark ring" style="left:53%;top:52%"><span class="d"></span><span class="l">Nicho</span></div>
+        </div>
+        <div class="bd"><span class="badge">Alterado · 01</span><h3>Báscula e nicho</h3><p>Os fechamentos dos nichos passaram a ser em báscula, e foi criado o nicho iluminado junto à cabeceira.</p></div>
+      </article>
+    </div>
+
+  </div>
+</section>
 <section class="sub gal" id="imagens-meninas">
   <div class="wrap">
     <div class="gal-head rv">
@@ -907,7 +924,7 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.targ
 $$('.rv').forEach(el=>io.observe(el));
 
 const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&e.target.offsetParent!==null){const id=e.target.dataset.sec;links.forEach(x=>x.classList.toggle('on',x.getAttribute('href')==='#'+id))}}),{rootMargin:'-45% 0px -50% 0px'});
-[['sala','sala'],['tour-sala','sala'],['aj-sala','sala'],['imagens-sala','sala'],['quarto','quarto'],['layout-quarto','quarto'],['tour-quarto','quarto'],['aj-quarto','quarto'],['imagens-quarto','quarto'],['suite','suite'],['layout-suite','suite'],['tour-suite','suite'],['aj-suite','suite'],['imagens-suite','suite'],['meninas','meninas'],['imagens-meninas','meninas'],['enviar','enviar']].forEach(([id,s])=>{const el=document.getElementById(id);el.dataset.sec=s;so.observe(el)});
+[['sala','sala'],['tour-sala','sala'],['aj-sala','sala'],['imagens-sala','sala'],['quarto','quarto'],['layout-quarto','quarto'],['tour-quarto','quarto'],['aj-quarto','quarto'],['imagens-quarto','quarto'],['suite','suite'],['layout-suite','suite'],['tour-suite','suite'],['aj-suite','suite'],['imagens-suite','suite'],['meninas','meninas'],['aj-meninas','meninas'],['imagens-meninas','meninas'],['enviar','enviar']].forEach(([id,s])=>{const el=document.getElementById(id);el.dataset.sec=s;so.observe(el)});
 })();
 </script>
 <script>(function(){
