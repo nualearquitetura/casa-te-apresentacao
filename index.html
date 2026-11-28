@@ -448,7 +448,7 @@ body.editg #ordBar{display:flex}
   <div class="wrap amb-txt">
     <p class="kicker">Casa TE · Ambiente 01</p>
     <h1 class="amb-h">SALA DE ESTAR E JANTAR</h1>
-    <span class="pill ok big">✓ Ambiente aprovado</span><div class="cli-com" id="cliSala" hidden></div>
+    <span class="pill ok big">✓ Ambiente aprovado em 21/11/2026</span><div class="cli-com" id="cliSala" hidden></div>
   </div>
 </section>
 <section class="sub" id="tour-sala">
@@ -529,7 +529,7 @@ body.editg #ordBar{display:flex}
   <div class="wrap amb-txt">
     <p class="kicker">Casa TE · Ambiente 02</p>
     <h1 class="amb-h">QUARTO DOS MENINOS</h1>
-    <span class="pill big">Para aprovar</span>
+    <span class="pill ok big">✓ Ambiente aprovado em 22/11/2026</span>
   </div>
 </section>
 <section id="layout-quarto" class="lay">
@@ -559,7 +559,7 @@ body.editg #ordBar{display:flex}
   <div class="wrap">
     <p class="kicker rv">O que mudou</p>
     <h2 class="rv">Atualizações do projeto</h2>
-    <p class="lead rv">Confira e deixe sua aprovação ou comentário.</p>
+    <p class="lead rv">Ajustes já aprovados.</p>
     <div class="ajg ajg2">
       <article class="ajc rv" data-aj="quarto:spots">
         <div class="pic"><img src="img/quarto/geral.jpg" alt="Teto do quarto com plafon central e dois spots" style="object-position:center 0%">
@@ -573,11 +573,7 @@ body.editg #ordBar{display:flex}
           <span class="badge">Layout e iluminação · 01</span>
           <h3>Novo layout e 3 spots</h3>
           <p>O layout do quarto foi modificado. Antes, havia só a iluminação central; foram adicionados 3 spots devido à falta de iluminação específica nesses pontos.</p>
-          <div class="ok">
-            <button type="button" data-v="aprovado">✓ Aprovo</button>
-            <button type="button" data-v="comentar">Comentar</button>
-          </div>
-          <textarea placeholder="Escreva seu comentário…"></textarea>
+          <span class="ok-aprov">✓ Aprovado</span>
         </div>
       </article>
     </div>
@@ -607,7 +603,7 @@ body.editg #ordBar{display:flex}
   <div class="wrap amb-txt">
     <p class="kicker">Casa TE · Ambiente 03</p>
     <h1 class="amb-h">SUÍTE CASAL</h1>
-    <span class="pill big">Para aprovar</span>
+    <span class="pill ok big">✓ Ambiente aprovado em 23/11/2026</span>
   </div>
 </section>
 <section id="layout-suite" class="lay">
@@ -637,7 +633,7 @@ body.editg #ordBar{display:flex}
   <div class="wrap">
     <p class="kicker rv">O que mudou</p>
     <h2 class="rv">Atualizações do projeto</h2>
-    <p class="lead rv">Confira o que mudou e deixe sua aprovação no final.</p>
+    <p class="lead rv">Ajustes já aprovados.</p>
         <div class="ajg ajg2">
       <article class="ajc rv">
         <div class="pic"><img src="img/suite/guarda-roupa-prateleiras.jpg" alt="Spots realocados sobre o guarda-roupa" style="object-position:center 0%">
@@ -700,14 +696,14 @@ body.editg #ordBar{display:flex}
   <div class="wrap amb-txt">
     <p class="kicker">Casa TE · Ambiente 04</p>
     <h1 class="amb-h">QUARTO DAS MENINAS</h1>
-    <span class="pill big">Para aprovar</span>
+    <span class="pill ok big">✓ Ambiente aprovado em 28/11/2026</span>
   </div>
 </section>
 <section class="aj sub" id="aj-meninas">
   <div class="wrap">
     <p class="kicker rv">O que mudou</p>
     <h2 class="rv">Atualizações do projeto</h2>
-    <p class="lead rv">Confira o que mudou e deixe sua aprovação no final.</p>
+    <p class="lead rv">Ajustes já aprovados.</p>
         <div class="ajg ajg2">
       <article class="ajc rv">
         <div class="pic" style="aspect-ratio:1121/1403"><img src="img/meninas/cabeceira-nicho.jpg" alt="Báscula e nicho sobre a cama">
@@ -766,36 +762,6 @@ body.editg #ordBar{display:flex}
   <div class="wrap">
     <p class="kicker rv">Sua resposta</p>
     <h2 class="rv"><span data-only="quarto">QUARTO DOS MENINOS</span><span data-only="suite">SUÍTE CASAL</span><span data-only="meninas">QUARTO DAS MENINAS</span><span data-only="sala">ENVIAR COMENTÁRIOS</span></h2>
-    <div class="ajc apv" data-aj="quarto:ambiente" data-only="quarto">
-      <div class="bd">
-        <h3>Aprovação do projeto</h3>
-        <div class="ok">
-          <button type="button" data-v="aprovado">✓ Aprovo o projeto</button>
-          <button type="button" data-v="ajustes">Quero ajustes</button>
-        </div>
-        <textarea class="show" placeholder="Deixe um comentário (opcional)…"></textarea>
-      </div>
-    </div>
-    <div class="ajc apv" data-aj="suite:ambiente" data-only="suite">
-      <div class="bd">
-        <h3>Aprovação do projeto</h3>
-        <div class="ok">
-          <button type="button" data-v="aprovado">✓ Aprovo o projeto</button>
-          <button type="button" data-v="ajustes">Quero ajustes</button>
-        </div>
-        <textarea class="show" placeholder="Deixe um comentário (opcional)…"></textarea>
-      </div>
-    </div>
-    <div class="ajc apv" data-aj="meninas:ambiente" data-only="meninas">
-      <div class="bd">
-        <h3>Aprovação das imagens</h3>
-        <div class="ok">
-          <button type="button" data-v="aprovado">✓ Aprovo as imagens</button>
-          <button type="button" data-v="ajustes">Quero ajustes</button>
-        </div>
-        <textarea class="show" placeholder="Deixe um comentário (opcional)…"></textarea>
-      </div>
-    </div>
     <div class="send">
       <a class="btn solid" id="wa" href="https://chat.whatsapp.com/JyiOYUk4MlU4gNzYTkQrfx" target="_blank" rel="noopener">Enviar no grupo do WhatsApp</a>
       <button class="btn" id="copy" type="button">Copiar resposta</button>
