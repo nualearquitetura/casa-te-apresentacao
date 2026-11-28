@@ -430,7 +430,7 @@ body.editg #ordBar{display:flex}
 <body>
 
 <header class="top" id="top">
-  <a href="#quarto" aria-label="Início"><img src="img/logo-nuale.png" alt="Nualē Arquitetura & Interiores"></a>
+  <a href="#meninas" aria-label="Início"><img src="img/logo-nuale.png" alt="Nualē Arquitetura & Interiores"></a>
   <nav id="nav">
     <a href="#sala">SALA</a>
     <a href="#quarto">QUARTO DOS MENINOS</a>
@@ -523,7 +523,7 @@ body.editg #ordBar{display:flex}
 <a class="next" href="#quarto"><img src="img/quarto/geral.jpg" alt=""><span class="next-t"><small>Próximo ambiente</small><b>QUARTO DOS MENINOS</b></span><span class="next-a" aria-hidden="true">→</span></a>
 </main>
 
-<main class="page" data-page="quarto">
+<main class="page" data-page="quarto" hidden>
 <section class="amb-hero" id="quarto">
   <img src="img/quarto/geral.jpg" alt="Quarto dos meninos">
   <div class="wrap amb-txt">
@@ -694,7 +694,7 @@ body.editg #ordBar{display:flex}
 <a class="next prev" href="#quarto"><img src="img/quarto/geral.jpg" alt=""><span class="next-a" aria-hidden="true">←</span><span class="next-t"><small>Ambiente anterior</small><b>QUARTO DOS MENINOS</b></span></a>
 </main>
 
-<main class="page" data-page="meninas" hidden>
+<main class="page" data-page="meninas">
 <section class="amb-hero" id="meninas">
   <img src="img/meninas/geral.jpg" alt="Quarto das meninas">
   <div class="wrap amb-txt">
@@ -936,7 +936,7 @@ $('#copy').onclick=async()=>{try{await navigator.clipboard.writeText(msg());toas
 const CLI_SALA="Anna, projeto aprovado. Só vamos retirar os spots em cima dos quadro aos lados dos quadros. Projeto Maravilhoso, obrigado por recuperar nossas expectativas e sonho na casa."; if(CLI_SALA){const el=$('#cliSala');el.innerHTML=`<small>Comentário do cliente · aprovado em 21/11/2026</small><p>“${CLI_SALA}”</p>`;el.hidden=false}
 /* páginas */
 function rota(){let h=location.hash.slice(1);const pg=['sala','quarto','suite','meninas'];
-  if(!pg.includes(h)){if(h&&document.getElementById(h))return;h='quarto'}
+  if(!pg.includes(h)){if(h&&document.getElementById(h))return;h='meninas'}
   const cur=document.querySelector('.page:not([hidden])');
   $$('.page').forEach(p=>p.hidden=p.dataset.page!==h);
   if(!cur||cur.dataset.page!==h)scrollTo(0,0);
